@@ -156,8 +156,8 @@ app.post('/menos_download', async (req, res) => {
         const querySelect = `SELECT donwload FROM TABLETK2 WHERE email = '${email}'`;
         const result = await connection.execute(querySelect);
         const novoDownload = result.recordset[0].donwload; // novo valor da coluna 'donwload'
-
         res.json({ success: true, novoDownload });
+
     } catch (error) {
         console.error('Erro ao decrementar o donwload:', error);
         res.status(500).json({ success: false, error: 'Erro interno do servidor' });
@@ -171,7 +171,7 @@ app.post('/get_downloads', async (req, res) => {
         const connection = await connect();
         const querySelect = `SELECT donwload FROM TABLETK2 WHERE email = '${email}'`;
         const result = await connection.execute(querySelect);
-        const novoDownload = result.recordset[0].donwload; // novo valor da coluna 'donwload'
+        const novoDownload =result; // novo valor da coluna 'donwload'
 
         res.json({ success: true, novoDownload });
     } catch (error) {
